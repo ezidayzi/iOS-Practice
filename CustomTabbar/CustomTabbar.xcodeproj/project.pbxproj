@@ -8,18 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		811A9A83CFAC7C6CF2C01166 /* Pods_CustomTabbar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39C248364AFBD852B1F8DFE6 /* Pods_CustomTabbar.framework */; };
+		DDA4E6142657729B000704F6 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4E6132657729B000704F6 /* BaseVC.swift */; };
+		DDA4E62B2658BEF0000704F6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4E62A2658BEF0000704F6 /* FirstViewController.swift */; };
+		DDA4E62E2658BF23000704F6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4E62D2658BF23000704F6 /* SecondViewController.swift */; };
 		DDF6C08A2657672C00BF9E0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C0892657672C00BF9E0C /* AppDelegate.swift */; };
 		DDF6C08C2657672C00BF9E0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C08B2657672C00BF9E0C /* SceneDelegate.swift */; };
 		DDF6C08E2657672C00BF9E0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C08D2657672C00BF9E0C /* ViewController.swift */; };
 		DDF6C0912657672C00BF9E0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF6C08F2657672C00BF9E0C /* Main.storyboard */; };
 		DDF6C0932657672D00BF9E0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDF6C0922657672D00BF9E0C /* Assets.xcassets */; };
 		DDF6C0962657672D00BF9E0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF6C0942657672D00BF9E0C /* LaunchScreen.storyboard */; };
+		DDF6C0AB26576A7500BF9E0C /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C0AA26576A7500BF9E0C /* MenuBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		39C248364AFBD852B1F8DFE6 /* Pods_CustomTabbar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomTabbar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E98F7EFF4B3CE87A4E0B63 /* Pods-CustomTabbar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomTabbar.release.xcconfig"; path = "Target Support Files/Pods-CustomTabbar/Pods-CustomTabbar.release.xcconfig"; sourceTree = "<group>"; };
 		597435E188B4164F7F623332 /* Pods-CustomTabbar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomTabbar.debug.xcconfig"; path = "Target Support Files/Pods-CustomTabbar/Pods-CustomTabbar.debug.xcconfig"; sourceTree = "<group>"; };
+		DDA4E6132657729B000704F6 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		DDA4E62A2658BEF0000704F6 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		DDA4E62D2658BF23000704F6 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		DDF6C0862657672C00BF9E0C /* CustomTabbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomTabbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDF6C0892657672C00BF9E0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDF6C08B2657672C00BF9E0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +35,7 @@
 		DDF6C0922657672D00BF9E0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDF6C0952657672D00BF9E0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDF6C0972657672D00BF9E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDF6C0AA26576A7500BF9E0C /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,10 @@
 			isa = PBXGroup;
 			children = (
 				DDF6C08D2657672C00BF9E0C /* ViewController.swift */,
+				DDF6C0AA26576A7500BF9E0C /* MenuBar.swift */,
+				DDA4E6132657729B000704F6 /* BaseVC.swift */,
+				DDA4E62A2658BEF0000704F6 /* FirstViewController.swift */,
+				DDA4E62D2658BF23000704F6 /* SecondViewController.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -263,7 +275,11 @@
 			files = (
 				DDF6C08E2657672C00BF9E0C /* ViewController.swift in Sources */,
 				DDF6C08A2657672C00BF9E0C /* AppDelegate.swift in Sources */,
+				DDF6C0AB26576A7500BF9E0C /* MenuBar.swift in Sources */,
+				DDA4E62B2658BEF0000704F6 /* FirstViewController.swift in Sources */,
+				DDA4E62E2658BF23000704F6 /* SecondViewController.swift in Sources */,
 				DDF6C08C2657672C00BF9E0C /* SceneDelegate.swift in Sources */,
+				DDA4E6142657729B000704F6 /* BaseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
