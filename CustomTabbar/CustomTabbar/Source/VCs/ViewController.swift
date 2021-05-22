@@ -23,27 +23,30 @@ class ViewController: TabmanViewController {
     }
     
     func settingTabBar (ctBar : TMBar.ButtonBar) {
-            ctBar.layout.transitionStyle = .snap
-            // 왼쪽 여백주기
-            ctBar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 13.0, bottom: 0.0, right: 20.0)
-            
-            // 간격
-            ctBar.layout.interButtonSpacing = 35
+        ctBar.layout.transitionStyle = .snap
+        // 왼쪽 여백주기
+        ctBar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
+        
+        // 간격
+        ctBar.layout.interButtonSpacing = 35
                 
-            ctBar.backgroundView.style = .blur(style: .light)
+        ctBar.backgroundView.style = .flat(color: .white)
             
-            // 선택 / 안선택 색 + font size
-            ctBar.buttons.customize { (button) in
-                button.tintColor = .blue
-                button.selectedTintColor = .black
-                button.font = UIFont.systemFont(ofSize: 16)
-                button.selectedFont = UIFont.systemFont(ofSize: 16, weight: .medium)
+        // 선택 / 안선택 색 + font size
+        ctBar.buttons.customize { (button) in
+            button.tintColor = .gray
+            button.selectedTintColor = .black
+            button.font = UIFont.systemFont(ofSize: 16)
+            button.selectedFont = UIFont.systemFont(ofSize: 16, weight: .medium)
+            button.snp.makeConstraints {
+                $0.width.equalTo((UIScreen.main.bounds.size.width/2-35))
             }
-            
-            // 인디케이터 (영상에서 주황색 아래 바 부분)
-            ctBar.indicator.weight = .custom(value: 2)
-            ctBar.indicator.tintColor = .black
         }
+        
+        // 인디케이터 (영상에서 주황색 아래 바 부분)
+        ctBar.indicator.weight = .custom(value: 2)
+        ctBar.indicator.tintColor = .black
+    }
 }
 
 extension ViewController: PageboyViewControllerDataSource, TMBarDataSource {
@@ -53,9 +56,9 @@ extension ViewController: PageboyViewControllerDataSource, TMBarDataSource {
         // MARK: -Tab 안 글씨들
         switch index {
         case 0:
-            return TMBarItem(title: "example 1")
+            return TMBarItem(title: "New")
         case 1:
-            return TMBarItem(title: "example 2")
+            return TMBarItem(title: "Best")
         default:
             let title = "Page \(index)"
             return TMBarItem(title: title)
