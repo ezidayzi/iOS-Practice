@@ -16,13 +16,11 @@ class ViewController: UIViewController{
     
     private let customTabbar = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then() {
         let layout = UICollectionViewFlowLayout()
-        
         let screenWidth = UIScreen.main.bounds.width
         layout.itemSize = CGSize(width: screenWidth/5, height: 60)
         layout.minimumInteritemSpacing = 0
         
         $0.backgroundColor = .white
-       
         $0.collectionViewLayout = layout
     }
     
@@ -36,19 +34,32 @@ class ViewController: UIViewController{
         $0.backgroundColor = .cyan
     }
     
+    private let contentView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setDelegate()
+        setMainScrollView()
+        setUI()
+
+    }
+    
+    func setDelegate(){
         customTabbar.delegate = self
         customTabbar.dataSource = self
         customTabbar.register(MenuItemCVC.self, forCellWithReuseIdentifier: MenuItemCVC.identifier)
         
         mainScrollView.delegate = self
         
+    }
+    
+    func setUI(){
         view.addSubview(customTabbar)
         view.addSubview(indicator)
         view.addSubview(mainScrollView)
+        
+        mainScrollView.addSubview(contentView)
         
         customTabbar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -68,17 +79,11 @@ class ViewController: UIViewController{
             $0.leading.trailing.bottom.equalToSuperview()
         }
 
-        let contentView = UIView()
-        mainScrollView.addSubview(contentView)
-
         contentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalTo(UIScreen.main.bounds.width * 5)
             $0.height.equalToSuperview()
         }
-        
-        setMainScrollView()
-
     }
     
     func setMainScrollView(){
@@ -129,26 +134,7 @@ extension ViewController : UICollectionViewDataSource{
 
 extension ViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var newOffset = CGPoint(x: 0, y: 0)
-        
-        switch indexPath.row{
-        case 0:
-            newOffset = CGPoint(x: 0, y: 0)
-        case 1:
-            newOffset = CGPoint(x: UIScreen.main.bounds.width, y: 0)
-            
-        case 2:
-            newOffset = CGPoint(x: UIScreen.main.bounds.width*2, y: 0)
-           
-        case 3:
-            newOffset = CGPoint(x: UIScreen.main.bounds.width*3, y: 0)
-
-        case 4:
-            newOffset = CGPoint(x: UIScreen.main.bounds.width*4, y: 0)
-        default:
-            newOffset = CGPoint(x: 0, y: 0)
-        }
-        
+        let newOffset = CGPoint(x: Int(UIScreen.main.bounds.width) * indexPath.row, y: 0)
         mainScrollView.setContentOffset(newOffset, animated: true)
     }
 }
