@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		DD68B29B267069F2008D4A3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD68B299267069F2008D4A3E /* Main.storyboard */; };
 		DD68B29D267069F3008D4A3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD68B29C267069F3008D4A3E /* Assets.xcassets */; };
 		DD68B2A0267069F3008D4A3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD68B29E267069F3008D4A3E /* LaunchScreen.storyboard */; };
+		DD68B2AD26706B2F008D4A3E /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68B2AC26706B2F008D4A3E /* BottomSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		DD68B29C267069F3008D4A3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD68B29F267069F3008D4A3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD68B2A1267069F3008D4A3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD68B2AC26706B2F008D4A3E /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				DD68B29C267069F3008D4A3E /* Assets.xcassets */,
 				DD68B29E267069F3008D4A3E /* LaunchScreen.storyboard */,
 				DD68B2A1267069F3008D4A3E /* Info.plist */,
+				DD68B2AC26706B2F008D4A3E /* BottomSheet.swift */,
 			);
 			path = BottomSheet;
 			sourceTree = "<group>";
@@ -88,7 +91,6 @@
 				4C08775E604C0CEB91023BDD /* Pods-BottomSheet.debug.xcconfig */,
 				20FB3E012C7E9809C0A7BDAE /* Pods-BottomSheet.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -208,6 +210,7 @@
 			files = (
 				DD68B298267069F2008D4A3E /* ViewController.swift in Sources */,
 				DD68B294267069F2008D4A3E /* AppDelegate.swift in Sources */,
+				DD68B2AD26706B2F008D4A3E /* BottomSheet.swift in Sources */,
 				DD68B296267069F2008D4A3E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

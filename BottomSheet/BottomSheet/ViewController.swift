@@ -6,14 +6,31 @@
 //
 
 import UIKit
+import PanModal
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .black
     }
-
-
 }
 
+extension ViewController: PanModalPresentable {
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+
+    var longFormHeight: PanModalHeight {
+        return .maxHeightWithTopInset(200)
+    }
+
+    var anchorModalToLongForm: Bool {
+        return false
+    }
+}
