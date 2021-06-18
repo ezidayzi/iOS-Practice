@@ -10,7 +10,7 @@ import Tabman
 
 class ViewController: TabmanViewController {
     
-    var  views : [UIViewController] = [FirstViewController(),SecondViewController()]
+    var  views : [UIViewController] = [FirstViewController(),SecondViewController(),FirstViewController(),SecondViewController(),FirstViewController()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,8 @@ class ViewController: TabmanViewController {
         // 인디케이터 (영상에서 주황색 아래 바 부분)
         ctBar.indicator.weight = .custom(value: 2)
         ctBar.indicator.tintColor = .black
+        
+        ctBar.scrollMode = .swipe
     }
 }
 

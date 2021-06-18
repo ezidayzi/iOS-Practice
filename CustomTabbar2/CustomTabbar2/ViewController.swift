@@ -17,9 +17,12 @@ class ViewController: UIViewController{
     private let customTabbar = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then() {
         let layout = UICollectionViewFlowLayout()
         let screenWidth = UIScreen.main.bounds.width
-        layout.itemSize = CGSize(width: screenWidth/5, height: 60)
+        layout.itemSize = CGSize(width: 150, height: 60)
         layout.minimumInteritemSpacing = 0
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         
+        $0.showsHorizontalScrollIndicator = false
         $0.backgroundColor = .white
         $0.collectionViewLayout = layout
     }
@@ -70,7 +73,7 @@ class ViewController: UIViewController{
         indicator.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.bottom.equalTo(customTabbar.snp.bottom)
-            $0.width.equalTo(UIScreen.main.bounds.width/5)
+            $0.width.equalTo(150)
             $0.height.equalTo(4)
         }
 
@@ -136,13 +139,33 @@ extension ViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let newOffset = CGPoint(x: Int(UIScreen.main.bounds.width) * indexPath.row, y: 0)
         mainScrollView.setContentOffset(newOffset, animated: true)
+
+        indicator.snp.updateConstraints {
+            $0.leading.equalToSuperview().offset((mainScrollView.contentOffset.x/5))
+        }
+        
+        collectionView.isPagingEnabled = false
+        collectionView.scrollToItem(at: indexPath,at: .right, animated: true)
+        collectionView.isPagingEnabled = true
+//        collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
     }
+    
+  
 }
 
 extension ViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        indicator.snp.updateConstraints {
-            $0.leading.equalToSuperview().offset((scrollView.contentOffset.x/5))
+       
+        if scrollView == mainScrollView{
+            customTabbar.setContentOffset(CGPoint(x:mainScrollView.contentOffset.x/5, y: 0), animated: true)
+            print(mainScrollView.contentOffset.x/5)
+//            indicator.snp.updateConstraints {
+//                $0.leading.equalToSuperview().offset((mainScrollView.contentOffset.x/5))
+//            }
+        } else{
+            indicator.snp.updateConstraints {
+                $0.leading.equalToSuperview().offset((customTabbar.contentOffset.x))
+            }
         }
     }
 }
