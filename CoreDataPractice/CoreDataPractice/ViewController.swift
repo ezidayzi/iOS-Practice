@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  CoreData
+//  CoreDataPractice
 //
-//  Created by 김윤서 on 2021/06/18.
+//  Created by 김윤서 on 2021/06/22.
 //
 
 import UIKit
