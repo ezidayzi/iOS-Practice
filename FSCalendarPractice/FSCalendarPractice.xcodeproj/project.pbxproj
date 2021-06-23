@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		DD4171252682CEA400B95468 /* FSCalendarPractice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD4171232682CEA400B95468 /* FSCalendarPractice.xcdatamodeld */; };
 		DD4171272682CEA500B95468 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD4171262682CEA500B95468 /* Assets.xcassets */; };
 		DD41712A2682CEA500B95468 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD4171282682CEA500B95468 /* LaunchScreen.storyboard */; };
+		DD79507F2682F673002851F9 /* DIYCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD79507E2682F673002851F9 /* DIYCalendarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		DD4171262682CEA500B95468 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD4171292682CEA500B95468 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD41712B2682CEA500B95468 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD79507E2682F673002851F9 /* DIYCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIYCalendarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +52,6 @@
 				8B44668E63D1F639A7FED871 /* Pods-FSCalendarPractice.debug.xcconfig */,
 				873EBBB11FFA3AD42BAF6F37 /* Pods-FSCalendarPractice.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -91,6 +92,7 @@
 				DD4171282682CEA500B95468 /* LaunchScreen.storyboard */,
 				DD41712B2682CEA500B95468 /* Info.plist */,
 				DD4171232682CEA400B95468 /* FSCalendarPractice.xcdatamodeld */,
+				DD79507E2682F673002851F9 /* DIYCalendarCell.swift */,
 			);
 			path = FSCalendarPractice;
 			sourceTree = "<group>";
@@ -212,6 +214,7 @@
 				DD41711F2682CEA400B95468 /* ViewController.swift in Sources */,
 				DD4171252682CEA400B95468 /* FSCalendarPractice.xcdatamodeld in Sources */,
 				DD41711B2682CEA400B95468 /* AppDelegate.swift in Sources */,
+				DD79507F2682F673002851F9 /* DIYCalendarCell.swift in Sources */,
 				DD41711D2682CEA400B95468 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

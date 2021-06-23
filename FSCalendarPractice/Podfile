@@ -7,6 +7,8 @@ target 'FSCalendarPractice' do
 
   pod 'FSCalendar'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'Then'
+
 
   # Pods for FSCalendarPractice
 
