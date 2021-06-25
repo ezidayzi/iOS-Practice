@@ -8,6 +8,8 @@
 import UIKit
 
 import FSCalendar
+import SnapKit
+import Then
 
 enum SelectionType : Int {
     case none
@@ -21,6 +23,10 @@ enum SelectionType : Int {
 class DIYCalendarCell: FSCalendarCell {
     static let identifier = "DIYCalendarCell"
     
+    private let circleView = UIView().then {
+        $0.backgroundColor = .blue
+    }
+    
 //    weak var circleImageView: UIImageView!
 //    weak var selectionLayer: CAShapeLayer!
 //
@@ -29,13 +35,21 @@ class DIYCalendarCell: FSCalendarCell {
 //            setNeedsLayout()
 //        }
 //    }
+
+    required init!(coder aDecoder: NSCoder!) {
+        fatalError("init(coder:) has not been implemented")
+    }
 //
-//    required init!(coder aDecoder: NSCoder!) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        addSubview(circleView)
+        
+        circleView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        
 //
 //        let circleImageView = UIImageView(image: UIImage(named: "circle")!)
 //        self.contentView.insertSubview(circleImageView, at: 0)
@@ -52,8 +66,8 @@ class DIYCalendarCell: FSCalendarCell {
 //        let view = UIView(frame: self.bounds)
 //        view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.12)
 //        self.backgroundView = view;
-//
-//    }
+
+    }
 //
 //    override func layoutSubviews() {
 //        super.layoutSubviews()
