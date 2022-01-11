@@ -86,6 +86,16 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		DDC26F3F278D8509003D8A38 /* LoginFlow */ = {
+			isa = PBXGroup;
+			children = (
+				DDD3BC1E278C997100BE6CAA /* LoginCoordinator.swift */,
+				DDC26F39278D72EF003D8A38 /* YellowCoordinator.swift */,
+				DDC26F3D278D7FBE003D8A38 /* RedCoordinator.swift */,
+			);
+			path = LoginFlow;
+			sourceTree = "<group>";
+		};
 		DDD3BBF2278C915300BE6CAA = {
 			isa = PBXGroup;
 			children = (
@@ -120,12 +130,10 @@
 		DDD3BC12278C938A00BE6CAA /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				DDC26F3F278D8509003D8A38 /* LoginFlow */,
 				DDD3BC1D278C995800BE6CAA /* Foundation */,
 				DDD3BC17278C968100BE6CAA /* AppCoordinator.swift */,
-				DDD3BC1E278C997100BE6CAA /* LoginCoordinator.swift */,
 				DDD3BC20278C9DA400BE6CAA /* MainCoordinator.swift */,
-				DDC26F39278D72EF003D8A38 /* YellowCoordinator.swift */,
-				DDC26F3D278D7FBE003D8A38 /* RedCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";

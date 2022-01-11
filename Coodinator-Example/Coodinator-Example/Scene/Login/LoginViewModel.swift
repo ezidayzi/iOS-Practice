@@ -11,6 +11,7 @@ import RxCocoa
 protocol LoginViewControllable: AnyObject {
     func showMainViewController()
     func showYellowViewCotoller()
+    func showRedViewController()
 }
 
 final class LoginViewModel {
@@ -25,10 +26,6 @@ final class LoginViewModel {
     
     struct Output {
         
-    }
-    
-    init(loginControllable: LoginViewControllable) {
-        self.controllable = loginControllable
     }
     
     func transform(input: Input) -> Output {

@@ -16,7 +16,7 @@ protocol YellowViewControllable: AnyObject {
 final class YellowViewModel {
     private let disposeBag = DisposeBag()
     
-    weak var controllable: YellowViewControllable?
+    weak var controllable: LoginViewControllable?
     
     struct Input {
         let buttonDidTapped: Observable<Void>
@@ -25,10 +25,6 @@ final class YellowViewModel {
     
     struct Output {
         
-    }
-    
-    init(yellowControllable: YellowViewControllable) {
-        self.controllable = yellowControllable
     }
     
     func transform(input: Input) -> Output {
@@ -40,7 +36,7 @@ final class YellowViewModel {
         
         input.button2DidTapped
             .bind{
-//                self.controllable?.showYellowViewCotoller()
+                self.controllable?.showRedViewController()
             }
             .disposed(by: disposeBag)
         
