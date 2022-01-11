@@ -20,15 +20,17 @@ final class LoginCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        let login = LoginViewController()
+        let viewModel = LoginViewModel(loginControllable: self)
+        
+        let login = LoginViewController(loginViewModel: viewModel)
         login.title = "로그인"
-        login.coordinator = self
+        
         self.navigationController.pushViewController(login, animated: true)
     }
 }
 
-extension LoginCoordinator{
-    func switchMainFlow() {
+extension LoginCoordinator: LoginViewControllable {
+    func showMainViewController() {
         dependencies?.makeMainTabBarViewController(self)
     }
 }
