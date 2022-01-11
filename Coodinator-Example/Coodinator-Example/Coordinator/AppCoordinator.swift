@@ -48,6 +48,7 @@ extension AppCoordinator: LoginCoordinatorDependencies {
     func makeMainTabBarViewController(_ loginCoordinator: LoginCoordinator) {
         navigationController = UINavigationController()
         window.rootViewController = navigationController
+        removeChildCoordinator(loginCoordinator)
         let mainCoordinator = MainCoordinator(navigationController: self.navigationController)
         mainCoordinator.start()
         addChildCoordinator(mainCoordinator)

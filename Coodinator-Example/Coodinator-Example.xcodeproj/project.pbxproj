@@ -10,6 +10,12 @@
 		DDC26F2C278D6B16003D8A38 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DDC26F2B278D6B16003D8A38 /* RxCocoa */; };
 		DDC26F2E278D6B16003D8A38 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DDC26F2D278D6B16003D8A38 /* RxSwift */; };
 		DDC26F31278D6B95003D8A38 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC26F30278D6B95003D8A38 /* LoginViewModel.swift */; };
+		DDC26F34278D71A6003D8A38 /* BlueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC26F33278D71A6003D8A38 /* BlueViewController.swift */; };
+		DDC26F36278D71BB003D8A38 /* RedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC26F35278D71BB003D8A38 /* RedViewController.swift */; };
+		DDC26F38278D71D5003D8A38 /* YellowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC26F37278D71D5003D8A38 /* YellowViewController.swift */; };
+		DDC26F3A278D72EF003D8A38 /* YellowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC26F39278D72EF003D8A38 /* YellowCoordinator.swift */; };
+		DDC26F3C278D7517003D8A38 /* YellowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC26F3B278D7517003D8A38 /* YellowViewModel.swift */; };
+		DDC26F3E278D7FBE003D8A38 /* RedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC26F3D278D7FBE003D8A38 /* RedCoordinator.swift */; };
 		DDD3BBFF278C915300BE6CAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD3BBFE278C915300BE6CAA /* AppDelegate.swift */; };
 		DDD3BC03278C915300BE6CAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD3BC02278C915300BE6CAA /* ViewController.swift */; };
 		DDD3BC08278C915600BE6CAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDD3BC07278C915600BE6CAA /* Assets.xcassets */; };
@@ -25,6 +31,12 @@
 
 /* Begin PBXFileReference section */
 		DDC26F30278D6B95003D8A38 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		DDC26F33278D71A6003D8A38 /* BlueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueViewController.swift; sourceTree = "<group>"; };
+		DDC26F35278D71BB003D8A38 /* RedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedViewController.swift; sourceTree = "<group>"; };
+		DDC26F37278D71D5003D8A38 /* YellowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowViewController.swift; sourceTree = "<group>"; };
+		DDC26F39278D72EF003D8A38 /* YellowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowCoordinator.swift; sourceTree = "<group>"; };
+		DDC26F3B278D7517003D8A38 /* YellowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowViewModel.swift; sourceTree = "<group>"; };
+		DDC26F3D278D7FBE003D8A38 /* RedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedCoordinator.swift; sourceTree = "<group>"; };
 		DDD3BBFB278C915300BE6CAA /* Coodinator-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coodinator-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD3BBFE278C915300BE6CAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDD3BC02278C915300BE6CAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,10 +68,22 @@
 		DDC26F2F278D6B80003D8A38 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				DDD3BC19278C988C00BE6CAA /* LoginViewController.swift */,
-				DDC26F30278D6B95003D8A38 /* LoginViewModel.swift */,
+				DDC26F32278D7192003D8A38 /* Login */,
+				DDC26F33278D71A6003D8A38 /* BlueViewController.swift */,
+				DDC26F35278D71BB003D8A38 /* RedViewController.swift */,
 			);
 			path = Scene;
+			sourceTree = "<group>";
+		};
+		DDC26F32278D7192003D8A38 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DDD3BC19278C988C00BE6CAA /* LoginViewController.swift */,
+				DDC26F30278D6B95003D8A38 /* LoginViewModel.swift */,
+				DDC26F37278D71D5003D8A38 /* YellowViewController.swift */,
+				DDC26F3B278D7517003D8A38 /* YellowViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		DDD3BBF2278C915300BE6CAA = {
@@ -100,6 +124,8 @@
 				DDD3BC17278C968100BE6CAA /* AppCoordinator.swift */,
 				DDD3BC1E278C997100BE6CAA /* LoginCoordinator.swift */,
 				DDD3BC20278C9DA400BE6CAA /* MainCoordinator.swift */,
+				DDC26F39278D72EF003D8A38 /* YellowCoordinator.swift */,
+				DDC26F3D278D7FBE003D8A38 /* RedCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -194,12 +220,18 @@
 				DDD3BC03278C915300BE6CAA /* ViewController.swift in Sources */,
 				DDD3BBFF278C915300BE6CAA /* AppDelegate.swift in Sources */,
 				DDD3BC18278C968100BE6CAA /* AppCoordinator.swift in Sources */,
+				DDC26F3C278D7517003D8A38 /* YellowViewModel.swift in Sources */,
+				DDC26F36278D71BB003D8A38 /* RedViewController.swift in Sources */,
+				DDC26F38278D71D5003D8A38 /* YellowViewController.swift in Sources */,
+				DDC26F3A278D72EF003D8A38 /* YellowCoordinator.swift in Sources */,
 				DDD3BC1C278C98C200BE6CAA /* TabBarController.swift in Sources */,
 				DDD3BC14278C939B00BE6CAA /* Coordinator.swift in Sources */,
 				DDD3BC1F278C997100BE6CAA /* LoginCoordinator.swift in Sources */,
 				DDD3BC21278C9DA400BE6CAA /* MainCoordinator.swift in Sources */,
 				DDC26F31278D6B95003D8A38 /* LoginViewModel.swift in Sources */,
 				DDD3BC16278C955C00BE6CAA /* BaseCoordinator.swift in Sources */,
+				DDC26F3E278D7FBE003D8A38 /* RedCoordinator.swift in Sources */,
+				DDC26F34278D71A6003D8A38 /* BlueViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
