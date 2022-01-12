@@ -43,6 +43,12 @@ extension LoginCoordinator: LoginViewControllable {
 }
 
 extension LoginCoordinator: YellowCoordinatorDependencies {
+    func showRedViewController(_ yellowCoordinator: YellowCoordinator) {
+        let red = RedCoordinator(navigationController: navigationController)
+        red.start()
+        addChildCoordinator(red)
+    }
+    
     func makeMainTabBarViewController(_ yellowCoordinator: YellowCoordinator) {
         dependencies?.makeMainTabBarViewController(self)
     }

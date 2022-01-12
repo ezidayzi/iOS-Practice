@@ -9,6 +9,7 @@ import Foundation
 
 protocol YellowCoordinatorDependencies: AnyObject {
     func makeMainTabBarViewController(_ yellowCoordinator: YellowCoordinator)
+    func showRedViewController(_ yellowCoordinator: YellowCoordinator)
 }
 
 final class YellowCoordinator: BaseCoordinator {
@@ -24,7 +25,7 @@ final class YellowCoordinator: BaseCoordinator {
 
 extension YellowCoordinator: YellowViewControllable {
     func showRedViewController() {
-        
+        dependencies?.showRedViewController(self)
     }
     
     func showMainViewController() {

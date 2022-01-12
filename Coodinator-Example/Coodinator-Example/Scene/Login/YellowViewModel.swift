@@ -40,7 +40,7 @@ final class YellowViewModel {
         
         input.button2DidTapped
             .bind{
-//                self.controllable?.showYellowViewCotoller()
+                self.controllable?.showRedViewController()
             }
             .disposed(by: disposeBag)
         
