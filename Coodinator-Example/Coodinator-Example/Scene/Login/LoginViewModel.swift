@@ -9,8 +9,7 @@ import RxSwift
 import RxCocoa
 
 protocol LoginViewControllable: AnyObject {
-    func showMainViewController()
-    func showYellowViewCotoller()
+    func performTransition(_ loginViewModel: LoginViewModel, to transition: LoginFlow)
 }
 
 final class LoginViewModel {
@@ -19,8 +18,8 @@ final class LoginViewModel {
     weak var controllable: LoginViewControllable?
     
     struct Input {
-        let buttonDidTapped: Observable<Void>
-        let button2DidTapped: Observable<Void>
+        let buttonDidTapped: Signal<Void>
+        let button2DidTapped: Signal<Void>
     }
     
     struct Output {
@@ -33,14 +32,16 @@ final class LoginViewModel {
     
     func transform(input: Input) -> Output {
         input.buttonDidTapped
-            .bind{
-                self.controllable?.showMainViewController()
+            .withUnretained(self)
+            .emit{ owner, _ in
+                owner.controllable?.performTransition(owner, to: .main)
             }
             .disposed(by: disposeBag)
         
         input.button2DidTapped
-            .bind{
-                self.controllable?.showYellowViewCotoller()
+            .withUnretained(self)
+            .emit{ owner, _ in
+                owner.controllable?.performTransition(self, to: .yellow)
             }
             .disposed(by: disposeBag)
             

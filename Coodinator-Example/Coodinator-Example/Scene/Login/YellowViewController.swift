@@ -30,6 +30,14 @@ final class YellowViewController: UIViewController {
         return btn
     }()
     
+    private let button3: UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = .black
+        btn.setTitle("pop", for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
     required init(yellowViewModel: YellowViewModel) {
         self.viewModel = yellowViewModel
         super.init(nibName: nil, bundle: nil)
@@ -49,8 +57,9 @@ final class YellowViewController: UIViewController {
     
     private func bind() {
         let input = YellowViewModel.Input(
-            buttonDidTapped: button.rx.controlEvent(.touchUpInside).asObservable(),
-            button2DidTapped: button2.rx.controlEvent(.touchUpInside).asObservable()
+            buttonDidTapped: button.rx.tap.asSignal(),
+            button2DidTapped: button2.rx.tap.asSignal(),
+            button3DidTapped: button3.rx.tap.asSignal()
         )
         
         _ = viewModel.transform(input: input)
@@ -69,6 +78,12 @@ final class YellowViewController: UIViewController {
         button2.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: 0).isActive = true
         button2.widthAnchor.constraint(equalToConstant: 117).isActive = true
         button2.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        view.addSubview(button3)
+        button3.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: 30).isActive = true
+        button3.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: 0).isActive = true
+        button3.widthAnchor.constraint(equalToConstant: 117).isActive = true
+        button3.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
 
 }

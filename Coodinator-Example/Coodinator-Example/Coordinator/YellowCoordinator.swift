@@ -7,9 +7,14 @@
 
 import Foundation
 
+enum YellowFlow {
+    case main
+    case red
+    case yellow
+}
+
 protocol YellowCoordinatorDependencies: AnyObject {
-    func makeMainTabBarViewController(_ yellowCoordinator: YellowCoordinator)
-    func showRedViewController(_ yellowCoordinator: YellowCoordinator)
+    func performTransition(_ yellowCoordinator: YellowCoordinator, to transition: YellowFlow)
 }
 
 final class YellowCoordinator: BaseCoordinator {
@@ -21,14 +26,11 @@ final class YellowCoordinator: BaseCoordinator {
         yellow.title = "노랑"
         navigationController.pushViewController(yellow, animated: true)
     }
+    
 }
 
 extension YellowCoordinator: YellowViewControllable {
-    func showRedViewController() {
-        dependencies?.showRedViewController(self)
-    }
-    
-    func showMainViewController() {
-        dependencies?.makeMainTabBarViewController(self)
+    func performTransition(_ yellowViewModel: YellowViewModel, to transition: YellowFlow) {
+        dependencies?.performTransition(self, to: transition)
     }
 }

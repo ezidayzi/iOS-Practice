@@ -49,8 +49,8 @@ final class LoginViewController: UIViewController {
     
     private func bind() {
         let input = LoginViewModel.Input(
-            buttonDidTapped: button.rx.controlEvent(.touchUpInside).asObservable(),
-            button2DidTapped: button2.rx.controlEvent(.touchUpInside).asObservable()
+            buttonDidTapped: button.rx.controlEvent(.touchUpInside).asSignal(),
+            button2DidTapped: button2.rx.controlEvent(.touchUpInside).asSignal()
         )
         
         _ = viewModel.transform(input: input)

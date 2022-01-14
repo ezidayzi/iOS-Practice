@@ -15,7 +15,6 @@ public enum AppFlow {
 final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator]
-    var pareantCoordinator: Coordinator?
     
     let window: UIWindow
     let flow: AppFlow
@@ -46,7 +45,6 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator: LoginCoordinatorDependencies {
     func makeMainTabBarViewController(_ loginCoordinator: LoginCoordinator) {
-        navigationController = UINavigationController()
         window.rootViewController = navigationController
         removeChildCoordinator(loginCoordinator)
         let mainCoordinator = MainCoordinator(navigationController: self.navigationController)

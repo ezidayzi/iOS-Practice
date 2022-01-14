@@ -9,8 +9,7 @@ import RxSwift
 import RxCocoa
 
 protocol YellowViewControllable: AnyObject {
-    func showMainViewController()
-    func showRedViewController()
+    func performTransition(_ yellowViewModel: YellowViewModel, to transition: YellowFlow)
 }
 
 final class YellowViewModel {
@@ -19,8 +18,9 @@ final class YellowViewModel {
     weak var controllable: YellowViewControllable?
     
     struct Input {
-        let buttonDidTapped: Observable<Void>
-        let button2DidTapped: Observable<Void>
+        let buttonDidTapped: Signal<Void>
+        let button2DidTapped: Signal<Void>
+        let button3DidTapped: Signal<Void>
     }
     
     struct Output {
@@ -33,14 +33,23 @@ final class YellowViewModel {
     
     func transform(input: Input) -> Output {
         input.buttonDidTapped
-            .bind{
-                self.controllable?.showMainViewController()
+            .withUnretained(self)
+            .emit{ owner, _ in
+                owner.controllable?.performTransition(owner, to: .main)
             }
             .disposed(by: disposeBag)
         
         input.button2DidTapped
-            .bind{
-                self.controllable?.showRedViewController()
+            .withUnretained(self)
+            .emit{ owner, _ in
+                owner.controllable?.performTransition(owner, to: .red)
+            }
+            .disposed(by: disposeBag)
+        
+        input.button3DidTapped
+            .withUnretained(self)
+            .emit{ owner, _ in
+                owner.controllable?.performTransition(owner, to: .yellow)
             }
             .disposed(by: disposeBag)
         

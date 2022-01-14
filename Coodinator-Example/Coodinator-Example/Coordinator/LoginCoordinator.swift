@@ -7,6 +7,14 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
+enum LoginFlow {
+    case main
+    case yellow
+}
+
 protocol LoginCoordinatorDependencies: AnyObject {
     func makeMainTabBarViewController(_ loginCoordinator: LoginCoordinator)
 }
@@ -30,26 +38,33 @@ final class LoginCoordinator: BaseCoordinator {
 }
 
 extension LoginCoordinator: LoginViewControllable {
-    func showMainViewController() {
-        dependencies?.makeMainTabBarViewController(self)
-    }
-    
-    func showYellowViewCotoller() {
-        let yellow = YellowCoordinator(navigationController: navigationController)
-        yellow.start()
-        yellow.dependencies = self
-        addChildCoordinator(yellow)
+    func performTransition(_ loginViewModel: LoginViewModel, to transition: LoginFlow) {
+        switch transition {
+        case .main:
+            dependencies?.makeMainTabBarViewController(self)
+        case .yellow:
+            let yellow = YellowCoordinator(navigationController: navigationController)
+            yellow.start()
+            yellow.dependencies = self
+            addChildCoordinator(yellow)
+        }
     }
 }
 
 extension LoginCoordinator: YellowCoordinatorDependencies {
-    func showRedViewController(_ yellowCoordinator: YellowCoordinator) {
-        let red = RedCoordinator(navigationController: navigationController)
-        red.start()
-        addChildCoordinator(red)
-    }
-    
-    func makeMainTabBarViewController(_ yellowCoordinator: YellowCoordinator) {
-        dependencies?.makeMainTabBarViewController(self)
+    func performTransition(_ yellowCoordinator: YellowCoordinator, to transition: YellowFlow) {
+        switch transition {
+        case .main:
+            dependencies?.makeMainTabBarViewController(self)
+        case .yellow:
+            if yellowCoordinator.navigationController.topViewController == navigationController.topViewController {
+                removeChildCoordinator(yellowCoordinator)
+                navigationController.popViewController(animated: true)
+            }
+        case .red:
+            let red = RedCoordinator(navigationController: navigationController)
+            red.start()
+            addChildCoordinator(red)
+        }
     }
 }

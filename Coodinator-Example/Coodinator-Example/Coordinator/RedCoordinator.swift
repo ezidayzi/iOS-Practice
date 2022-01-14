@@ -11,6 +11,7 @@ final class RedCoordinator: BaseCoordinator {
     override func start() {
         let red = RedViewController()
         red.title = "빨강"
+        red.modalPresentationStyle = .fullScreen
         navigationController.present(red, animated: true, completion: nil)
     }
 }
