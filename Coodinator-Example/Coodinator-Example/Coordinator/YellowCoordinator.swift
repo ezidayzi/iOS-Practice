@@ -27,6 +27,10 @@ final class YellowCoordinator: BaseCoordinator {
         navigationController.pushViewController(yellow, animated: true)
     }
     
+    deinit {
+        print(childCoordinators)
+    }
+    
 }
 
 extension YellowCoordinator: YellowViewControllable {

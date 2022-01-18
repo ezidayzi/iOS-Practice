@@ -8,8 +8,16 @@
 import UIKit
 
 import RxCocoa
+import RxSwift
+
+protocol RedViewControllable: AnyObject {
+    func performTransition(_ redViewController: RedViewController, to transition: RedFlow)
+}
 
 final class RedViewController: UIViewController {
+    weak var redViewControllable: RedViewControllable?
+    
+    let disposeBag = DisposeBag()
     
     private let button: UIButton = {
         let btn = UIButton()
@@ -23,10 +31,11 @@ final class RedViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         setUpButton()
-//        button.rx.tap
-//            .subscribe { _ in
-//                <#code#>
-//            }
+        
+        button.rx.tap.bind{
+            self.redViewControllable?.performTransition(self, to: .dismiss)
+        }.disposed(by: disposeBag)
+            
 
     }
 

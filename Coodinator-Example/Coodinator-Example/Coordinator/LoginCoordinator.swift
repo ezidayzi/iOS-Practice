@@ -35,6 +35,10 @@ final class LoginCoordinator: BaseCoordinator {
         
         self.navigationController.pushViewController(login, animated: true)
     }
+    
+    deinit {
+        print(childCoordinators)
+    }
 }
 
 extension LoginCoordinator: LoginViewControllable {
@@ -57,14 +61,23 @@ extension LoginCoordinator: YellowCoordinatorDependencies {
         case .main:
             dependencies?.makeMainTabBarViewController(self)
         case .yellow:
-            if yellowCoordinator.navigationController.topViewController == navigationController.topViewController {
-                removeChildCoordinator(yellowCoordinator)
-                navigationController.popViewController(animated: true)
-            }
+            removeChildCoordinator(yellowCoordinator)
+            navigationController.popViewController(animated: true)
         case .red:
             let red = RedCoordinator(navigationController: navigationController)
+            red.dependencies = self
             red.start()
             addChildCoordinator(red)
+        }
+    }
+}
+
+extension LoginCoordinator: RedCoordinatorDependencies {
+    func performTransition(_ yellowCoordinator: RedCoordinator, to transition: RedFlow) {
+        switch transition {
+        case .dismiss:
+            navigationController.dismiss(animated: true, completion: nil)
+            removeChildCoordinator(yellowCoordinator)
         }
     }
 }
