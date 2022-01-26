@@ -55,6 +55,11 @@ final class YellowViewController: UIViewController {
         setUpButton()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        print("dismiss")
+    }
+    
     private func bind() {
         let input = YellowViewModel.Input(
             buttonDidTapped: button.rx.tap.asSignal(),

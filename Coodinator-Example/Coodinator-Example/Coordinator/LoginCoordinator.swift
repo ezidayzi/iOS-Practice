@@ -25,6 +25,7 @@ final class LoginCoordinator: BaseCoordinator {
     init(navigationController: UINavigationController, dependencies: LoginCoordinatorDependencies) {
         super.init(navigationController: navigationController)
         self.dependencies = dependencies
+        self.navigationController.delegate = self
     }
     
     override func start() {
@@ -40,6 +41,8 @@ final class LoginCoordinator: BaseCoordinator {
         print(childCoordinators)
     }
 }
+
+extension LoginCoordinator
 
 extension LoginCoordinator: LoginViewControllable {
     func performTransition(_ loginViewModel: LoginViewModel, to transition: LoginFlow) {
