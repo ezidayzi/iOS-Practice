@@ -12,8 +12,7 @@ protocol LoginViewControllable: AnyObject {
     func performTransition(_ loginViewModel: LoginViewModel, to transition: LoginFlow)
 }
 
-final class LoginViewModel {
-    private let disposeBag = DisposeBag()
+final class LoginViewModel: BaseViewModel {
     
     weak var controllable: LoginViewControllable?
     
@@ -32,6 +31,7 @@ final class LoginViewModel {
     
     func transform(input: Input) -> Output {
         input.buttonDidTapped
+            .debug("asdaasdf")
             .withUnretained(self)
             .emit{ owner, _ in
                 owner.controllable?.performTransition(owner, to: .main)
@@ -41,7 +41,7 @@ final class LoginViewModel {
         input.button2DidTapped
             .withUnretained(self)
             .emit{ owner, _ in
-                owner.controllable?.performTransition(self, to: .yellow)
+                owner.controllable?.performTransition(owner, to: .yellow)
             }
             .disposed(by: disposeBag)
             

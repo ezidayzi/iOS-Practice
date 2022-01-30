@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD80C23927A6914A00C8F10C /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD80C23827A6914A00C8F10C /* UIViewController+Rx.swift */; };
+		DD80C23B27A691A000C8F10C /* BaseViewBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD80C23A27A691A000C8F10C /* BaseViewBindable.swift */; };
+		DD80C23D27A691C900C8F10C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD80C23C27A691C900C8F10C /* BaseViewController.swift */; };
+		DD80C23F27A692DD00C8F10C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD80C23E27A692DD00C8F10C /* BaseViewModel.swift */; };
 		DDC26F2C278D6B16003D8A38 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DDC26F2B278D6B16003D8A38 /* RxCocoa */; };
 		DDC26F2E278D6B16003D8A38 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DDC26F2D278D6B16003D8A38 /* RxSwift */; };
 		DDC26F31278D6B95003D8A38 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC26F30278D6B95003D8A38 /* LoginViewModel.swift */; };
@@ -30,6 +34,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD80C23827A6914A00C8F10C /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		DD80C23A27A691A000C8F10C /* BaseViewBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewBindable.swift; sourceTree = "<group>"; };
+		DD80C23C27A691C900C8F10C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		DD80C23E27A692DD00C8F10C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		DDC26F30278D6B95003D8A38 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DDC26F33278D71A6003D8A38 /* BlueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueViewController.swift; sourceTree = "<group>"; };
 		DDC26F35278D71BB003D8A38 /* RedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +73,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD80C23727A6913900C8F10C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DD80C23827A6914A00C8F10C /* UIViewController+Rx.swift */,
+				DD80C23A27A691A000C8F10C /* BaseViewBindable.swift */,
+				DD80C23C27A691C900C8F10C /* BaseViewController.swift */,
+				DD80C23E27A692DD00C8F10C /* BaseViewModel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		DDC26F2F278D6B80003D8A38 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +124,7 @@
 		DDD3BBFD278C915300BE6CAA /* Coodinator-Example */ = {
 			isa = PBXGroup;
 			children = (
+				DD80C23727A6913900C8F10C /* Common */,
 				DDC26F2F278D6B80003D8A38 /* Scene */,
 				DDD3BC12278C938A00BE6CAA /* Coordinator */,
 				DDD3BBFE278C915300BE6CAA /* AppDelegate.swift */,
@@ -217,14 +237,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDD3BC1A278C988C00BE6CAA /* LoginViewController.swift in Sources */,
+				DD80C23F27A692DD00C8F10C /* BaseViewModel.swift in Sources */,
 				DDD3BC03278C915300BE6CAA /* ViewController.swift in Sources */,
+				DD80C23B27A691A000C8F10C /* BaseViewBindable.swift in Sources */,
 				DDD3BBFF278C915300BE6CAA /* AppDelegate.swift in Sources */,
+				DD80C23D27A691C900C8F10C /* BaseViewController.swift in Sources */,
 				DDD3BC18278C968100BE6CAA /* AppCoordinator.swift in Sources */,
 				DDC26F3C278D7517003D8A38 /* YellowViewModel.swift in Sources */,
 				DDC26F36278D71BB003D8A38 /* RedViewController.swift in Sources */,
 				DDC26F38278D71D5003D8A38 /* YellowViewController.swift in Sources */,
 				DDC26F3A278D72EF003D8A38 /* YellowCoordinator.swift in Sources */,
 				DDD3BC1C278C98C200BE6CAA /* TabBarController.swift in Sources */,
+				DD80C23927A6914A00C8F10C /* UIViewController+Rx.swift in Sources */,
 				DDD3BC14278C939B00BE6CAA /* Coordinator.swift in Sources */,
 				DDD3BC1F278C997100BE6CAA /* LoginCoordinator.swift in Sources */,
 				DDD3BC21278C9DA400BE6CAA /* MainCoordinator.swift in Sources */,

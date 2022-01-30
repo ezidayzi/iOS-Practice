@@ -22,7 +22,7 @@ final class YellowCoordinator: BaseCoordinator {
     
     override func start() {
         let viewModel = YellowViewModel(yellowControllable: self)
-        let yellow = YellowViewController(yellowViewModel: viewModel)
+        let yellow = YellowViewController(viewModel: viewModel)
         yellow.title = "노랑"
         navigationController.pushViewController(yellow, animated: true)
     }
@@ -34,6 +34,10 @@ final class YellowCoordinator: BaseCoordinator {
 }
 
 extension YellowCoordinator: YellowViewControllable {
+    func finish() {
+        finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+    }
+    
     func performTransition(_ yellowViewModel: YellowViewModel, to transition: YellowFlow) {
         dependencies?.performTransition(self, to: transition)
     }

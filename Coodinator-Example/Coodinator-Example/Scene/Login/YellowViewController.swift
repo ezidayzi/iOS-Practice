@@ -10,9 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class YellowViewController: UIViewController {
-    
-    private let viewModel: YellowViewModel
+final class YellowViewController: BaseViewController<YellowViewModel> {
     
     private let button: UIButton = {
         let btn = UIButton()
@@ -37,37 +35,30 @@ final class YellowViewController: UIViewController {
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
-    
-    required init(yellowViewModel: YellowViewModel) {
-        self.viewModel = yellowViewModel
-        super.init(nibName: nil, bundle: nil)
-        
-        bind()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
         setUpButton()
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        print("dismiss")
-    }
-    
-    private func bind() {
-        let input = YellowViewModel.Input(
-            buttonDidTapped: button.rx.tap.asSignal(),
-            button2DidTapped: button2.rx.tap.asSignal(),
-            button3DidTapped: button3.rx.tap.asSignal()
-        )
+
+    override func bind(viewModel: YellowViewModel) {
+        super.bind(viewModel: viewModel)
+        button.rx.tap
+            .map { _ in }
+            .bind(to: viewModel.buttonDidTapped)
+            .disposed(by: disposeBag)
         
-        _ = viewModel.transform(input: input)
+        button2.rx.tap
+            .map { _ in }
+            .bind(to: viewModel.button2DidTapped)
+            .disposed(by: disposeBag)
+        
+        button3.rx.tap
+            .map { _ in }
+            .bind(to: viewModel.button3DidTapped)
+            .disposed(by: disposeBag)
+    
     }
     
     

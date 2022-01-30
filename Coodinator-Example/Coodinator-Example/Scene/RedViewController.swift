@@ -38,6 +38,15 @@ final class RedViewController: UIViewController {
             
 
     }
+    
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        if isBeingDismissed || isMovingFromParent {
+            print("사라짐 \(self.description)")
+        }
+        
+    }
 
     private func setUpButton() {
         view.addSubview(button)

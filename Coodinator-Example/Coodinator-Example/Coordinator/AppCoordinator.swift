@@ -13,6 +13,8 @@ public enum AppFlow {
 }
 
 final class AppCoordinator: Coordinator {
+    var finishDelegate: CoordinatorFinishDelegate? = nil
+    
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator]
     
@@ -33,16 +35,26 @@ final class AppCoordinator: Coordinator {
         case .login:
             let loginCoordinator = LoginCoordinator(navigationController: self.navigationController, dependencies: self)
             loginCoordinator.start()
+            loginCoordinator.finishDelegate = self
             addChildCoordinator(loginCoordinator)
         case .main:
             let mainCoordinator = MainCoordinator(navigationController: self.navigationController)
             mainCoordinator.start()
+            mainCoordinator.finishDelegate = self
             addChildCoordinator(mainCoordinator)
         }
         window.makeKeyAndVisible()
     }
     
     deinit {
+        print(childCoordinators)
+    }
+}
+
+extension AppCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        print(childCoordinators)
+        removeChildCoordinator(childCoordinator)
         print(childCoordinators)
     }
 }

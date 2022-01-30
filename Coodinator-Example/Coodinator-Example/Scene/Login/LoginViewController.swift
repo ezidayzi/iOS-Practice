@@ -11,9 +11,7 @@ import RxCocoa
 import RxSwift
 
 
-final class LoginViewController: UIViewController {
-   
-    private let viewModel: LoginViewModel
+final class LoginViewController: BaseViewController<LoginViewModel> {
     
     private let button: UIButton = {
         let btn = UIButton()
@@ -31,23 +29,13 @@ final class LoginViewController: UIViewController {
         return btn
     }()
     
-    required init(loginViewModel: LoginViewModel) {
-        self.viewModel = loginViewModel
-        super.init(nibName: nil, bundle: nil)
-        
-        bind()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpButton()
     }
     
-    private func bind() {
+    override func bind(viewModel: LoginViewModel) {
+        super.bind(viewModel: viewModel)
         let input = LoginViewModel.Input(
             buttonDidTapped: button.rx.controlEvent(.touchUpInside).asSignal(),
             button2DidTapped: button2.rx.controlEvent(.touchUpInside).asSignal()

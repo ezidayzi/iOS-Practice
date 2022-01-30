@@ -25,13 +25,12 @@ final class LoginCoordinator: BaseCoordinator {
     init(navigationController: UINavigationController, dependencies: LoginCoordinatorDependencies) {
         super.init(navigationController: navigationController)
         self.dependencies = dependencies
-        self.navigationController.delegate = self
     }
     
     override func start() {
         let viewModel = LoginViewModel(loginControllable: self)
         
-        let login = LoginViewController(loginViewModel: viewModel)
+        let login = LoginViewController(viewModel: viewModel)
         login.title = "로그인"
         
         self.navigationController.pushViewController(login, animated: true)
@@ -42,7 +41,6 @@ final class LoginCoordinator: BaseCoordinator {
     }
 }
 
-extension LoginCoordinator
 
 extension LoginCoordinator: LoginViewControllable {
     func performTransition(_ loginViewModel: LoginViewModel, to transition: LoginFlow) {
@@ -53,8 +51,15 @@ extension LoginCoordinator: LoginViewControllable {
             let yellow = YellowCoordinator(navigationController: navigationController)
             yellow.start()
             yellow.dependencies = self
+            yellow.finishDelegate = self
             addChildCoordinator(yellow)
         }
+    }
+}
+
+extension LoginCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        removeChildCoordinator(childCoordinator)
     }
 }
 
@@ -79,8 +84,8 @@ extension LoginCoordinator: RedCoordinatorDependencies {
     func performTransition(_ yellowCoordinator: RedCoordinator, to transition: RedFlow) {
         switch transition {
         case .dismiss:
-            navigationController.dismiss(animated: true, completion: nil)
             removeChildCoordinator(yellowCoordinator)
+            navigationController.dismiss(animated: true, completion: nil)
         }
     }
 }
