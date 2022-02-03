@@ -53,7 +53,7 @@ public class BaseViewController<VM: BaseViewBindable>: UIViewController {
             .disposed(by: disposeBag)
         
         rx.didFinish
-            .map { _ in (print("dkdkdk")) }
+            .map { _ in (print("finish")) }
             .bind(to: viewModel.finish)
             .disposed(by: disposeBag)
     }

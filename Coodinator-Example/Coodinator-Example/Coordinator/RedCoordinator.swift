@@ -9,6 +9,7 @@ import UIKit
 
 enum RedFlow {
     case dismiss
+    case push
 }
 
 protocol RedCoordinatorDependencies: AnyObject {
@@ -18,12 +19,15 @@ protocol RedCoordinatorDependencies: AnyObject {
 final class RedCoordinator: BaseCoordinator {
     weak var dependencies: RedCoordinatorDependencies?
     
+    let nav = UINavigationController()
+    
     override func start() {
         let red = RedViewController()
         red.redViewControllable = self
         red.title = "빨강"
-        red.modalPresentationStyle = .fullScreen
-        navigationController.present(red, animated: true, completion: nil)
+        nav.setViewControllers([red], animated: true)
+        nav.modalPresentationStyle = .fullScreen
+        navigationController.present(nav, animated: true, completion: nil)
     }
     
     deinit {
@@ -33,6 +37,20 @@ final class RedCoordinator: BaseCoordinator {
 
 extension RedCoordinator: RedViewControllable {
     func performTransition(_ redViewController: RedViewController, to transition: RedFlow) {
-        dependencies?.performTransition(self, to: .dismiss)
+        switch transition {
+        case .dismiss:
+            dependencies?.performTransition(self, to: .dismiss)
+        case .push:
+            let blue = BlueViewController()
+            blue.controllable = self
+            nav.pushViewController(blue, animated: true)
+        }
+       
+    }
+}
+
+extension RedCoordinator: BlueViewControllable {
+    func performTransition(_ redViewController: BlueViewController, to transition: RedFlow) {
+        navigationController.dismiss(animated: true, completion: nil)
     }
 }

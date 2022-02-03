@@ -86,6 +86,8 @@ extension LoginCoordinator: RedCoordinatorDependencies {
         case .dismiss:
             removeChildCoordinator(yellowCoordinator)
             navigationController.dismiss(animated: true, completion: nil)
+        case .push:
+            break
         }
     }
 }
