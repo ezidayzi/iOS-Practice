@@ -66,6 +66,7 @@
 		DDBFA76027B018E50086A1F5 /* URLSession-Practice */ = {
 			isa = PBXGroup;
 			children = (
+				DDF3AB8627B16162005D6CC9 /* Network */,
 				DDBFA77927B02E0A0086A1F5 /* HTTPClient */,
 				DDBFA77527B0274F0086A1F5 /* APIModels */,
 				DDBFA76127B018E60086A1F5 /* AppDelegate.swift */,
@@ -93,6 +94,13 @@
 				DDBFA77A27B02E2C0086A1F5 /* HTTPClient.swift */,
 			);
 			path = HTTPClient;
+			sourceTree = "<group>";
+		};
+		DDF3AB8627B16162005D6CC9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
