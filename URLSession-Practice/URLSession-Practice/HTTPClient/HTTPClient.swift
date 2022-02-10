@@ -9,19 +9,12 @@ import Foundation
 
 import RxSwift
 
-typealias Parameters = [String: Any]
-typealias HTTPHeaders = [String: Any]
 
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
     case GET = "GET"
     case DELETE = "DELETE"
     case POST = "POST"
     case PUT = "PUT"
-}
-
-enum ParameterEncoding {
-    case URLEncoding
-    case JSONEncoding
 }
 
 protocol HTTPClientService {
@@ -30,7 +23,7 @@ protocol HTTPClientService {
         method: HTTPMethod,
         parameters: Parameters?,
         encoding: ParameterEncoding,
-        headers: HTTPHeaders?
+        headers: Headers?
     ) -> Observable<JSON>
 }
 
@@ -64,7 +57,7 @@ final class HTTPClient: HTTPClientService {
         method: HTTPMethod,
         parameters: Parameters?,
         encoding: ParameterEncoding,
-        headers: HTTPHeaders?
+        headers: Headers?
     ) -> Observable<JSON> {
         return Observable.create() { emitter in
            
