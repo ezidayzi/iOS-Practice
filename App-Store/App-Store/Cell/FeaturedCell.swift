@@ -78,8 +78,15 @@ final class FeaturedCell: UICollectionViewCell {
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        let targetSize = CGSize(width: layoutAttributes.frame.width, height: 0)
-        layoutAttributes.frame.size = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
+        super.preferredLayoutAttributesFitting(layoutAttributes)
+        layoutIfNeeded()
+
+        let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
+
+        var frame = layoutAttributes.frame
+        frame.size.height = ceil(size.height)
+
+        layoutAttributes.frame = frame
         return layoutAttributes
     }
 }
@@ -92,17 +99,17 @@ extension FeaturedCell {
         hStackView.addArrangedSubview(tagLabel)
         hStackView.addArrangedSubview(headingLabel)
         hStackView.addArrangedSubview(subheadingLabel)
-
-        hStackView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.top.equalToSuperview().priority(.high)
-        }
         
         imageView.snp.makeConstraints {
-            $0.top.equalTo(hStackView.snp.bottom).offset(5).priority(.high)
-            $0.height.equalTo(250).priority(.medium)
+            $0.top.equalTo(hStackView.snp.bottom).offset(5)
+            $0.height.equalTo(250)
+            $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().priority(.low)
+        }
+
+        hStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().priority(.medium)
+            $0.leading.trailing.equalToSuperview()
         }
     }
     

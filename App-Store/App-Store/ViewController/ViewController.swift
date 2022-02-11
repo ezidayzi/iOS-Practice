@@ -113,13 +113,12 @@ extension ViewController {
 
         let layoutGroupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.93),
-            heightDimension: .fractionalHeight(1)
+            heightDimension: .absolute(3000)
         )
 
-        let layoutGroup = NSCollectionLayoutGroup.horizontal(
+        let layoutGroup = NSCollectionLayoutGroup.vertical(
             layoutSize: layoutGroupSize,
-            subitem: layoutItem,
-            count: 1
+            subitems: [layoutItem]
         )
 
         let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
