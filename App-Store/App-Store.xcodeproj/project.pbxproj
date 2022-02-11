@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD35FEEA27B62A5100BEA8A8 /* SmallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD35FEE927B62A5100BEA8A8 /* SmallCollectionViewCell.swift */; };
+		DD35FEED27B62A9000BEA8A8 /* CollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD35FEEC27B62A9000BEA8A8 /* CollectionView+.swift */; };
+		DD35FEEF27B62AC500BEA8A8 /* MediumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD35FEEE27B62AC500BEA8A8 /* MediumCollectionViewCell.swift */; };
 		DD6E25E4279D1F2D00AD9BE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E25E3279D1F2D00AD9BE7 /* AppDelegate.swift */; };
 		DD6E25E6279D1F2D00AD9BE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E25E5279D1F2D00AD9BE7 /* SceneDelegate.swift */; };
 		DD6E25E8279D1F2D00AD9BE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E25E7279D1F2D00AD9BE7 /* ViewController.swift */; };
@@ -17,12 +20,15 @@
 		DD8829F427B4EB7200F00DD7 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8829F327B4EB7200F00DD7 /* App.swift */; };
 		DD8829F927B4ECD600F00DD7 /* MockParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8829F827B4ECD600F00DD7 /* MockParser.swift */; };
 		DD8829FC27B4EE0C00F00DD7 /* appstore.json in Resources */ = {isa = PBXBuildFile; fileRef = DD8829FB27B4EE0C00F00DD7 /* appstore.json */; };
-		DD8829FE27B4FD1A00F00DD7 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8829FD27B4FD1A00F00DD7 /* FeaturedCell.swift */; };
+		DD8829FE27B4FD1A00F00DD7 /* FeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8829FD27B4FD1A00F00DD7 /* FeaturedCollectionViewCell.swift */; };
 		DD882A0127B4FE9300F00DD7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD882A0027B4FE9300F00DD7 /* SnapKit */; };
 		DD882A0427B4FEC400F00DD7 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = DD882A0327B4FEC400F00DD7 /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD35FEE927B62A5100BEA8A8 /* SmallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD35FEEC27B62A9000BEA8A8 /* CollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+.swift"; sourceTree = "<group>"; };
+		DD35FEEE27B62AC500BEA8A8 /* MediumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD6E25E0279D1F2D00AD9BE7 /* App-Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "App-Store.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD6E25E3279D1F2D00AD9BE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD6E25E5279D1F2D00AD9BE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +41,7 @@
 		DD8829F327B4EB7200F00DD7 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		DD8829F827B4ECD600F00DD7 /* MockParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockParser.swift; sourceTree = "<group>"; };
 		DD8829FB27B4EE0C00F00DD7 /* appstore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appstore.json; sourceTree = "<group>"; };
-		DD8829FD27B4FD1A00F00DD7 /* FeaturedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCell.swift; sourceTree = "<group>"; };
+		DD8829FD27B4FD1A00F00DD7 /* FeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD35FEEB27B62A8000BEA8A8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DD35FEEC27B62A9000BEA8A8 /* CollectionView+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		DD6E25D7279D1F2D00AD9BE7 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +84,7 @@
 		DD6E25E2279D1F2D00AD9BE7 /* App-Store */ = {
 			isa = PBXGroup;
 			children = (
+				DD35FEEB27B62A8000BEA8A8 /* Extension */,
 				DD8829F527B4EB9500F00DD7 /* Mock */,
 				DD8829F027B4EB5900F00DD7 /* Model */,
 				DD8DF7DA27A19219004F1CA1 /* Cell */,
@@ -113,7 +128,9 @@
 		DD8DF7DA27A19219004F1CA1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				DD8829FD27B4FD1A00F00DD7 /* FeaturedCell.swift */,
+				DD8829FD27B4FD1A00F00DD7 /* FeaturedCollectionViewCell.swift */,
+				DD35FEE927B62A5100BEA8A8 /* SmallCollectionViewCell.swift */,
+				DD35FEEE27B62AC500BEA8A8 /* MediumCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -198,13 +215,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD35FEEA27B62A5100BEA8A8 /* SmallCollectionViewCell.swift in Sources */,
 				DD8829F227B4EB6500F00DD7 /* Section.swift in Sources */,
 				DD6E25E8279D1F2D00AD9BE7 /* ViewController.swift in Sources */,
 				DD8829F427B4EB7200F00DD7 /* App.swift in Sources */,
 				DD6E25E4279D1F2D00AD9BE7 /* AppDelegate.swift in Sources */,
-				DD8829FE27B4FD1A00F00DD7 /* FeaturedCell.swift in Sources */,
+				DD8829FE27B4FD1A00F00DD7 /* FeaturedCollectionViewCell.swift in Sources */,
 				DD8829F927B4ECD600F00DD7 /* MockParser.swift in Sources */,
 				DD6E25E6279D1F2D00AD9BE7 /* SceneDelegate.swift in Sources */,
+				DD35FEED27B62A9000BEA8A8 /* CollectionView+.swift in Sources */,
+				DD35FEEF27B62AC500BEA8A8 /* MediumCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

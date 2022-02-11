@@ -10,37 +10,7 @@ import UIKit
 import Then
 import SnapKit
 
-
-protocol ReusableView: AnyObject {}
-
-extension ReusableView where Self: UIView {
-    static var reuseIdentifier: String {
-        return String(describing: self)
-    }
-}
-
-extension UICollectionReusableView: ReusableView { }
-
-extension UICollectionView {
-    func dequeueReusableCell<T: UICollectionViewCell>(
-        forIndexPath indexPath: IndexPath
-    ) -> T {
-        guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier,
-                                             for: indexPath) as? T else {
-            fatalError("Could not dequeue cell with identifier: \(T.reuseIdentifier)")
-        }
-        return cell
-    }
-    
-    func register<T>(
-        cell: T.Type,
-        forCellWithReuseIdentifier reuseIdentifier: String = T.reuseIdentifier
-    ) where T: UICollectionViewCell {
-        register(cell, forCellWithReuseIdentifier: reuseIdentifier)
-    }
-}
-
-final class FeaturedCell: UICollectionViewCell {
+final class FeaturedCollectionViewCell: UICollectionViewCell {
     
     private let tagLabel = UILabel()
     private let headingLabel = UILabel()
@@ -91,7 +61,7 @@ final class FeaturedCell: UICollectionViewCell {
     }
 }
 
-extension FeaturedCell {
+extension FeaturedCollectionViewCell {
     private func render() {
         contentView.addSubview(hStackView)
         contentView.addSubview(imageView)
@@ -108,8 +78,8 @@ extension FeaturedCell {
         }
 
         hStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().priority(.medium)
-            $0.leading.trailing.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().priority(.high)
         }
     }
     
@@ -120,7 +90,7 @@ extension FeaturedCell {
         }
         
         headingLabel.do {
-            $0.font = .systemFont(ofSize: 16)
+            $0.font = .boldSystemFont(ofSize: 18)
             $0.numberOfLines = 0
         }
         
