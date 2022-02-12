@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 public typealias Parameters = [String: Any]
 public typealias Headers = [String: String]
@@ -23,7 +24,7 @@ public protocol RouterType {
     var method: HTTPMethod { get }
     var baseURL: URL { get }
     var path: String? { get }
-    var body: Data? { get }
+    var task: Task { get }
     var headers: Headers? { get }
 }
 
@@ -36,9 +37,42 @@ extension RouterType {
     }
 }
 
+public enum Task {
+    case plain
+    case withParameters(parameters: Parameters, encoding: PrameterEncoding)
+}
+
+
+public protocol PrameterEncoding {
+    func encode(_ urlRequest: URLRequest, with parameters: Parameters?) throws -> URLRequest
+}
+
+public enum URLEncoding: PrameterEncoding {
+    case queryString
+    
+    public func encode(_ urlRequest: URLRequest, with parameters: Parameters?) throws -> URLRequest {
+        switch self {
+        case .queryString:
+            var urlRequest = urlRequest
+            guard let url = urlRequest.url else {
+                throw APIError.encodedError
+            }
+            var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+            components?.queryItems = parameters?.map ({ key, value -> URLQueryItem in
+                URLQueryItem(name: key, value: value as? String)
+            })
+            
+            urlRequest.url = components?.url
+            return urlRequest
+        }
+    }
+    
+}
+
 enum APIError: Error {
     case serverError
     case decodedError
+    case encodedError
 }
 
 protocol RouterProviderType: AnyObject {
@@ -75,7 +109,14 @@ private extension RouterProvider {
         var urlRequest = URLRequest(url: router.url)
         urlRequest.httpMethod = router.method.rawValue
         urlRequest.allHTTPHeaderFields = router.headers ?? nil
-        urlRequest.httpBody = router.body
+        
+        switch router.task {
+        case .plain:
+            break
+        case let .withParameters(parameters, encoding):
+            urlRequest = try encoding.encode(urlRequest, with: parameters)
+        }
+        
         return urlRequest
     }
 }

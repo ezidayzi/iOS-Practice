@@ -12,7 +12,6 @@ enum ProductRouter{
 }
 
 extension ProductRouter: RouterType {
-  
     var baseURL: URL {
         switch self {
         case .getProducts:
@@ -23,7 +22,7 @@ extension ProductRouter: RouterType {
     var path: String? {
         switch self {
         case .getProducts:
-            return "?serviceKey=KJeZEeFZbu%2BlQy3OMv3FpnbLWrqM7mj8orXbKZQVAz%2FQe0ELaEIQnM%2BxY3NQY6k8%2BMi52M8Si%2B3Ys4bYV84o4w%3D%3D&returnType=json&numOfRows=100"
+            return  nil
         }
     }
     
@@ -34,10 +33,17 @@ extension ProductRouter: RouterType {
         }
     }
     
-    var body: Data? {
-        return nil
+    var task: Task {
+        switch self {
+        case .getProducts:
+            return .withParameters(parameters: [
+                "serviceKey":"KJeZEeFZbu%2BlQy3OMv3FpnbLWrqM7mj8orXbKZQVAz%2FQe0ELaEIQnM%2BxY3NQY6k8%2BMi52M8Si%2B3Ys4bYV84o4w%3D%3D",
+                "returnType": "json",
+                "numOfRows": 100
+            ], encoding: URLEncoding.queryString)
+        }
     }
-    
+
     var headers: Headers? {
         return nil
     }
