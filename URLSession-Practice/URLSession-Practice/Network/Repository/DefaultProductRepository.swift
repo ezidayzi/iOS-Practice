@@ -1,15 +1,11 @@
 //
-//  ProductRepository.swift
+//  DefaultProductRepository.swift
 //  URLSession-Practice
 //
 //  Created by 김윤서 on 2022/02/12.
 //
 
 import Foundation
-
-protocol ProductRepository {
-    func getProducts() async throws -> Product?
-}
 
 final class DefaultProductRepository: ProductRepository {
     private let router = RouterProvider<ProductRouter>()
