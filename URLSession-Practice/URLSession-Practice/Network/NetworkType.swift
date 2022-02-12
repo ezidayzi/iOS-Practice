@@ -8,58 +8,74 @@
 import Foundation
 
 public typealias Parameters = [String: Any]
-public typealias Headers = [String: Any]
+public typealias Headers = [String: String]
 
-public enum ParameterEncoding {
-    case URLEncoding
-    case JSONEncoding
-    
-    func encode(_ urlRequest: URLRequest, with: Parameters) -> URLRequest {
-        switch self {
-        case .URLEncoding:
-            return URLRequest(url:"")
-        case .JSONEncoding:
-            return URLRequest(url: "")
-        }
+struct Results {
+    let data: Data
+    let response: URLResponse
+    init(_ result: (Data, URLResponse)) {
+        self.data = result.0
+        self.response = result.1
     }
 }
 
-public protocol NetworkType {
-    var baseURL: URL { get }
-    var path: String { get }
+public protocol RouterType {
     var method: HTTPMethod { get }
-    var task: Task { get }
-    var headers: Headers { get }
+    var baseURL: URL { get }
+    var path: String? { get }
+    var body: Data? { get }
+    var headers: Headers? { get }
 }
 
-public enum Task {
-    case requestPlain
-    case requestParameters(parameters: Parameters, encoding: ParameterEncoding)
+extension RouterType {
+    var url: URL {
+        guard let path = path else {
+            return baseURL
+        }
+        return URL(string: path, relativeTo: baseURL)!
+    }
 }
 
+enum APIError: Error {
+    case serverError
+    case decodedError
+}
 
-internal extension URLRequest {
-    mutating func encoded(encodable: Encodable, encoder: JSONEncoder = JSONEncoder()) throws -> URLRequest {
+protocol RouterProviderType: AnyObject {
+    associatedtype Router: RouterType
+   
+    func request(_ router: Router) async throws -> Results
+}
+
+open class RouterProvider<Router: RouterType>: RouterProviderType {
+    func request(_ router: Router) async throws -> Results {
+        let urlRequest = try await makeURLRequest(with: router)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        guard let response = response as? HTTPURLResponse,
+              (200..<500) ~= response.statusCode else {
+                  throw APIError.serverError
+              }
+        
+        return Results((data, response))
+    }
+    
+    func decoded<T: Decodable>(with results: Results) async throws -> T? {
+        let decoder = JSONDecoder()
         do {
-            let encodable = AnyEncodable(encodable)
-            httpBody = try encoder.encode(encodable)
-
-            let contentTypeHeaderName = "Content-Type"
-            if value(forHTTPHeaderField: contentTypeHeaderName) == nil {
-                setValue("application/json", forHTTPHeaderField: contentTypeHeaderName)
-            }
-
-            return self
+            let decodedData = try decoder.decode(T.self, from: results.data)
+            return decodedData
         } catch {
-            throw dump(error)
+            throw APIError.decodedError
         }
     }
+}
 
-    func encoded(parameters: [String: Any], parameterEncoding: ParameterEncoding) throws -> URLRequest {
-        do {
-            return try parameterEncoding.encode(self, with: parameters)
-        } catch {
-            throw dump(error)
-        }
+private extension RouterProvider {
+    private func makeURLRequest(with router: Router) async throws -> URLRequest {
+        var urlRequest = URLRequest(url: router.url)
+        urlRequest.httpMethod = router.method.rawValue
+        urlRequest.allHTTPHeaderFields = router.headers ?? nil
+        urlRequest.httpBody = router.body
+        return urlRequest
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD16529027B7E4F4002B2780 /* ProductRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD16528F27B7E4F4002B2780 /* ProductRouter.swift */; };
+		DD16529227B7E6B0002B2780 /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD16529127B7E6B0002B2780 /* ProductRepository.swift */; };
 		DD8829EF27B3D09400F00DD7 /* NetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8829EE27B3D09400F00DD7 /* NetworkType.swift */; };
 		DDBFA76227B018E60086A1F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFA76127B018E60086A1F5 /* AppDelegate.swift */; };
 		DDBFA76427B018E60086A1F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFA76327B018E60086A1F5 /* SceneDelegate.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD16528F27B7E4F4002B2780 /* ProductRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRouter.swift; sourceTree = "<group>"; };
+		DD16529127B7E6B0002B2780 /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
 		DD8829EE27B3D09400F00DD7 /* NetworkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkType.swift; sourceTree = "<group>"; };
 		DDBFA75E27B018E50086A1F5 /* URLSession-Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "URLSession-Practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDBFA76127B018E60086A1F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				DD8829EE27B3D09400F00DD7 /* NetworkType.swift */,
+				DD16528F27B7E4F4002B2780 /* ProductRouter.swift */,
+				DD16529127B7E6B0002B2780 /* ProductRepository.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -188,8 +194,10 @@
 				DD8829EF27B3D09400F00DD7 /* NetworkType.swift in Sources */,
 				DDBFA77B27B02E2C0086A1F5 /* HTTPClient.swift in Sources */,
 				DDBFA76627B018E60086A1F5 /* ViewController.swift in Sources */,
+				DD16529227B7E6B0002B2780 /* ProductRepository.swift in Sources */,
 				DDBFA77727B027790086A1F5 /* Product.swift in Sources */,
 				DDBFA76227B018E60086A1F5 /* AppDelegate.swift in Sources */,
+				DD16529027B7E4F4002B2780 /* ProductRouter.swift in Sources */,
 				DDBFA76427B018E60086A1F5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

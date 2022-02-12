@@ -11,9 +11,10 @@ import RxSwift
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        let repository = DefaultProductRepository()
         Task {
-            let json = try await loadData()
-            print(json)
+            let response = try await repository.getProducts()
+            dump(response)
         }
     }
 
