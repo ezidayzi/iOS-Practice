@@ -5,14 +5,14 @@
 //  Created by 김윤서 on 2022/02/07.
 //
 
-struct Product: Decodable {
+struct Product: Decodable, Hashable {
     let totalCount, pageNo, resultCode: String
     let list: [List]
     let resultMessage, numOfRows: String
 }
 
 // MARK: - List
-struct List: Decodable {
+struct List: Decodable, Hashable {
     let prdkindstate, manufacture, rnum, prdkind: String
     let rawmtrl, prdlstNm: String
     let imgurl2, imgurl1: String

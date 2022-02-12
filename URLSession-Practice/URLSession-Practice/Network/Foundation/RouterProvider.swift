@@ -47,6 +47,8 @@ private extension RouterProvider {
         case let .withParameters(parameters, encoding):
             urlRequest = try encoding.encode(urlRequest, with: parameters)
         }
+        
+        dump(urlRequest)
         return urlRequest
     }
 }
